@@ -1,19 +1,17 @@
 const express = require('express');
 const router = express.Router();
-const createApproval = require('../services/createApproval');
+const createDialogue = require('../services/createApproval');
 
 router.post('/', async function(req, res, next) {
-  const {details, companion_id, act_id} = req.body;
+  const {act_id, region_id, dialogue, dialogue_details, additional_details} = req.body;
 
-  console.log('From /routes.. Req Body: ', req.body)
-
-  if (!details || !companion_id || !act_id) {
+  if (!act_id || !region_id || !dialogue || !dialogue_details || !additional_details) {
     res.status(400).send('Required fields missing');
     return;
   }
 
   try {
-    res.json(await createApproval.createApproval(req.body));
+    res.json(await createDialogue.createDialogue(req.body));
 
   } catch(err) {
     console.error(`Error while adding Approval`, err.message);

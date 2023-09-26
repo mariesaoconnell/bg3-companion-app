@@ -5,7 +5,7 @@ const config = require('../config');
 async function allApprovals(page = 1) {
 	const offset = helper.getOffset(page, config.listPerPage);
 	const rows = await db.query(
-		`SELECT * FROM companion_approvals LIMIT ${offset}, ${config.listPerPage}`
+		`SELECT * FROM dialogues LIMIT ${offset}, ${config.listPerPage}`
 	);
 	const data = helper.emptyOrRows(rows);
 	const meta = { page };

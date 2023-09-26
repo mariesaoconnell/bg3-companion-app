@@ -1,14 +1,16 @@
 db = require('./db');
 helper = require('../helper');
 
-async function createApproval(companionApproval) {
+async function createDialogue(dialogueOptions) {
 
 const result = await db.query(
-	`INSERT INTO companion_approvals (details, companion_id, act_id) VALUES (?, ?, ?)`,
+	`INSERT INTO dialogues (act_id, region_id, dialogue, dialogue_details, additional_details) VALUES (?, ?, ?, ?, ?)`,
 	[
-		companionApproval.details,
-		companionApproval.companion_id,
-		companionApproval.act_id,
+		dialogueOptions.act_id,
+		dialogueOptions.region_id,
+		dialogueOptions.dialogue,
+		dialogueOptions.dialogue_details,
+		dialogueOptions.additional_details,
 	]
 );
 
@@ -22,5 +24,5 @@ const result = await db.query(
 }
 
 module.exports = {
-	createApproval
+	createDialogue
 };

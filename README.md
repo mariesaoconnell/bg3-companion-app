@@ -10,7 +10,6 @@ This app will require users to create an account to leave comments / ratings.
 ### Database Info
 
 #### User Table
-
     user_id (PK)
     first_name
     last_name
@@ -19,21 +18,34 @@ This app will require users to create an account to leave comments / ratings.
     password
 
 #### Companions Table
-
     companion_id (PK)
     name
 
-#### Companion Approvals
-
-    companion_approval_id
-    details
-    companion_id (FK)
+#### Dialogues (Previously Companion Approvals)
+    id (PK)
     act_id (FK)
+    region_id (FK)
+    dialogue
+    dialogue_details
+    additional_details
 
 #### Act Table
-
     act_id
     act
+
+#### Regions
+    region_id (PK)
+    region_name
+    act (FK)
+
+#### Reactions
+    id (PK)
+    companion_id (FK)
+    dialogue_id (FK)
+    approves
+
+![DataBase](./assets/Screenshot%202023-09-20%20at%209.51.05%20PM.png)
+
 
 
 ## To Do List:
@@ -47,7 +59,8 @@ This app will require users to create an account to leave comments / ratings.
     ✅ - create tables
             - companions
             - act
-            - companion_approvals
+            - dialogues
+            - regions
             - user
 
     👷🏻‍♀️ - create "crud" functionality
