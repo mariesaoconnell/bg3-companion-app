@@ -1,5 +1,7 @@
 const express = require('express');
+const cors = require("cors");
 const app = express();
+
 const port = 3000;
 
 // IMPORT ROUTES
@@ -9,7 +11,11 @@ companionApprovalsRouter = require('./routes/companionApprovals');
 createApprovalRouter = require('./routes/createApproval');
 deleteApproval = require('./routes/deleteApproval')
 
+var corsOptions = {
+	origin: 'http://localhost:3001',
+};
 
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(
 	express.urlencoded({
@@ -18,7 +24,7 @@ app.use(
 );
 
 app.get('/', (req, res) => {
-	res.json({ message: 'Ok' });
+	res.json({ message: 'Welcome to the Home Page!' });
 });
 
 
