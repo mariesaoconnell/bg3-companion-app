@@ -1,5 +1,5 @@
 import React from 'react';
-import {Nav, Navbar, Container} from 'react-bootstrap';
+import {Nav, Navbar, NavDropdown, Container} from 'react-bootstrap';
 
 function NavigationBar(props) {
   return (
@@ -9,10 +9,13 @@ function NavigationBar(props) {
         <Navbar.Toggle aria-controls='basic-navbar-nav'/>
         <Navbar.Collapse>
           <Nav className='me-auto'>
-            <Nav.Link href='/home'>Home</Nav.Link>
+            <Nav.Link href='/'>Home</Nav.Link>
             <Nav.Link href='/create'>Create</Nav.Link>
-            <Nav.Link>Home</Nav.Link>
-            <Nav.Link>Home</Nav.Link>
+            <NavDropdown title="Search By">
+              <NavDropdown.Item href='/search/act'>Act</NavDropdown.Item>
+              <NavDropdown.Item href='/search/companion'>Companion</NavDropdown.Item>
+              <NavDropdown.Item href='/search/view-all'>View All Approvals</NavDropdown.Item>
+            </NavDropdown>
           </Nav>
         </Navbar.Collapse>
       </Container>

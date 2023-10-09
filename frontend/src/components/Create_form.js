@@ -229,7 +229,7 @@ function Create_form(props) {
 				<Container>
 					<Form.Check
 						inline
-						label='NautiloclassName'
+						label='Nautiloid'
 						name='region'
 						value='1'
 						type='radio'
