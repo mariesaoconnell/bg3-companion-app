@@ -1,0 +1,161 @@
+import React from 'react';
+import {Form, Button, Container} from 'react-bootstrap';
+
+function Create_form(props) {
+  return (
+		<Form>
+			<Form.Group>
+				<Form.Label>Companions Who Approve:</Form.Label>
+				<Container>
+					<Form.Check
+						inline
+						label='Astarion'
+						name='approve'
+						type='checkbox'
+						id='checkbox-approval'
+					/>
+					<Form.Check
+						inline
+						label='Gale'
+						name='approve'
+						type='checkbox'
+						id='checkbox-approval'
+					/>
+					<Form.Check
+						inline
+						label='Karlach'
+						name='approve'
+						type='checkbox'
+						id='checkbox-approval'
+					/>
+					<Form.Check
+						inline
+						label='Shadowheart'
+						name='approve'
+						type='checkbox'
+						id='checkbox-approval'
+					/>
+					<Form.Check
+						inline
+						label="Lae'zel"
+						name='approve'
+						type='checkbox'
+						id='checkbox-approval'
+					/>
+					<Form.Check
+						inline
+						label='Halsin'
+						name='approve'
+						type='checkbox'
+						id='checkbox-approval'
+					/>
+					<Form.Check
+						inline
+						label='Wyll'
+						name='approve'
+						type='checkbox'
+						id='checkbox-approval'
+					/>
+					<Form.Check
+						inline
+						label='Minthara'
+						name='approve'
+						type='checkbox'
+						id='checkbox-approval'
+					/>
+				</Container>
+			</Form.Group>
+			<Form.Group>
+				<Form.Label>Companions Who Disapprove:</Form.Label>
+				<Container>
+					<Form.Check
+						inline
+						label='Astarion'
+						name='approve'
+						type='checkbox'
+						id='checkbox-disapproval'
+					/>
+					<Form.Check
+						inline
+						label='Gale'
+						name='approve'
+						type='checkbox'
+						id='checkbox-disapproval'
+					/>
+					<Form.Check
+						inline
+						label='Karlach'
+						name='approve'
+						type='checkbox'
+						id='checkbox-disapproval'
+					/>
+					<Form.Check
+						inline
+						label='Shadowheart'
+						name='approve'
+						type='checkbox'
+						id='checkbox-disapproval'
+					/>
+					<Form.Check
+						inline
+						label="Lae'zel"
+						name='approve'
+						type='checkbox'
+						id='checkbox-disapproval'
+					/>
+					<Form.Check
+						inline
+						label='Halsin'
+						name='approve'
+						type='checkbox'
+						id='checkbox-disapproval'
+					/>
+					<Form.Check
+						inline
+						label='Wyll'
+						name='approve'
+						type='checkbox'
+						id='checkbox-disapproval'
+					/>
+					<Form.Check
+						inline
+						label='Minthara'
+						name='approve'
+						type='checkbox'
+						id='checkbox-disapproval'
+					/>
+				</Container>
+			</Form.Group>
+      <hr />
+      <Form.Group>
+        <Form.Label>Act:</Form.Label>
+        <Container>
+          <Form.Check
+            inline
+            label="Act 1"
+            name='act'
+            type='radio'
+            id='radio-act'
+          />
+          <Form.Check
+            inline
+            label="Act 2"
+            name='act'
+            type='radio'
+            id='radio-act'
+          />
+          <Form.Check
+            inline
+            label="Act 3"
+            name='act'
+            type='radio'
+            id='radio-act'
+          />
+
+        </Container>
+      </Form.Group>
+		</Form>
+	);
+}
+
+export default Create_form;
