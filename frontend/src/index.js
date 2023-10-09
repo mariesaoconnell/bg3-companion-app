@@ -7,6 +7,8 @@ import Layout from './pages/Layout';
 import NoPage from './pages/NoPage';
 import Create from './pages/Create';
 
+import './styles/index.css';
+
 export default function App() {
   return (
 		<BrowserRouter>
