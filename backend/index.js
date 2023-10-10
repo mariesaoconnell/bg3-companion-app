@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require("cors");
 const app = express();
 
-const port = 3000;
+const port = 3006;
 
 // IMPORT ROUTES
 allApprovalsRouter = require('./routes/allApprovals');
@@ -12,7 +12,7 @@ createApprovalRouter = require('./routes/createApproval');
 deleteApproval = require('./routes/deleteApproval')
 
 var corsOptions = {
-	origin: 'http://localhost:3001',
+	origin: 'http://localhost:3000',
 };
 
 app.use(cors(corsOptions));
