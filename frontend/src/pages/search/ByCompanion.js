@@ -1,11 +1,15 @@
 import React, {useState} from 'react';
 import {Form, Container, Button} from 'react-bootstrap';
+import DialogueCard from '../../components/search_components/DialogueCard'
 
 function ByCompanion(props) {
 
   const [companions, SetCompanions] = useState({
     companion: []
-  })
+  });
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [results, setResults] = useState([]);
 
       const onChange = (event) => {
 				const { name, value, type } = event.target;
@@ -22,10 +26,34 @@ function ByCompanion(props) {
 				}
 			};
 
-			const onSubmit = (event) => {
+			const onSubmit = async(event) => {
 				event.preventDefault();
-				console.log(companions);
-				// Here you can handle the submission (e.g., send the formData to an API)
+        setIsSubmitted(true);
+        setIsLoading(true);
+
+        let url = `http://localhost:3006/companion-approvals/${companions.companion}`;
+
+        try {
+        const response = await fetch(url);
+
+        // Check if the response is ok (status in the range 200-299)
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const apiResults = await response.json();
+        if (Array.isArray(apiResults.data)) {
+					setResults(apiResults.data);
+				} else {
+					console.error('API did not return an array:', apiResults);
+					setResults([]); // set to an empty array or handle in some other way
+				}
+    } catch (error) {
+        console.error('Failed fetching data: ', error);
+        // Optionally set some state here to indicate the error to the user
+    }
+
+    setIsLoading(false);
 			};
 
   return (
@@ -108,10 +136,24 @@ function ByCompanion(props) {
 								className='checkbox-approval'
 								onChange={onChange}
 							/>
-          <Button variant='primary' type='submit'>Search</Button>
+							<Button variant='primary' type='submit'>
+								Search
+							</Button>
 						</Container>
 					</Form.Group>
 				</Form>
+			</Container>
+			<Container>
+				{!isSubmitted ? (
+					<div>Select Companion(s)</div>
+				) : isLoading ? (
+					<div>Loading...</div>
+				) : (
+
+					Array.isArray(results) && results.map((result) => (
+    <DialogueCard key={result.id} data={result} />
+))
+				)}
 			</Container>
 		</div>
 	);

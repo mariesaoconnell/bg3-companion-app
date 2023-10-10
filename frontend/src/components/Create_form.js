@@ -1,40 +1,63 @@
-import React, {useState} from 'react';
-import {Form, Button, Container} from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Form, Button, Container } from 'react-bootstrap';
 
 function Create_form(props) {
+	const [formData, setFormData] = useState({
+		approve: [],
+		disapprove: [],
+		act_id: '',
+		region_id: '',
+		dialogue: '',
+		dialogue_details: '',
+		additional_details: '',
+	});
 
-    const [formData, setFormData] = useState({
-        approve: [],
-        disapprove: [],
-        act: '',
-        region: '',
-        dialogue: '',
-        dialogueDetails: '',
-        additionalDetails: ''
-    });
+	const onChange = (event) => {
+		const { name, value, type } = event.target;
 
-    const onChange = (event) => {
-        const { name, value, type } = event.target;
+		if (type === 'checkbox') {
+			const newArray = [...formData[name], value];
+			if (formData[name].includes(value)) {
+				const valueIndex = formData[name].indexOf(value);
+				newArray.splice(valueIndex, 1);
+			}
+			setFormData((prevState) => ({ ...prevState, [name]: newArray }));
+		} else {
+			setFormData((prevState) => ({ ...prevState, [name]: value }));
+		}
+	};
 
-        if (type === 'checkbox') {
-            const newArray = [...formData[name], value];
-            if (formData[name].includes(value)) {
-                const valueIndex = formData[name].indexOf(value);
-                newArray.splice(valueIndex, 1);
-            }
-            setFormData(prevState => ({ ...prevState, [name]: newArray }));
-        } else {
-            setFormData(prevState => ({ ...prevState, [name]: value }));
-        }
-    };
+	const submitData = async (data) => {
+		try {
+			const response = await fetch('http://localhost:3006/create-approval', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(data),
+			});
 
-      const onSubmit = (event) => {
-				event.preventDefault();
-				console.log(formData);
-				// Here you can handle the submission (e.g., send the formData to an API)
-			};
+			if (!response.ok) {
+				// If HTTP status is not in the 200-299 range
+				// Try to parse it as text for an error message, then throw it
+				const errorMessage = await response.text();
+				throw new Error(errorMessage);
+			}
 
-  return (
+			// Handle response accordingly, maybe set some state or show a message
+		} catch (error) {
+			console.error('Error submitting data:', error);
+			// Handle errors accordingly, maybe set some state or show an error message
+		}
+	};
+
+	const onSubmit = (event) => {
+		event.preventDefault();
+		// Here you can handle the submission (e.g., send the formData to an API)
+		submitData(formData);
+	};
+
+	return (
 		<Form onSubmit={onSubmit}>
 			<Form.Group>
 				<Form.Label>Companions Who Approve:</Form.Label>
@@ -198,7 +221,7 @@ function Create_form(props) {
 						inline
 						label='Act 1'
 						value='1'
-						name='act'
+						name='act_id'
 						type='radio'
 						className='radio-act'
 						onChange={onChange}
@@ -207,7 +230,7 @@ function Create_form(props) {
 						inline
 						label='Act 2'
 						value='2'
-						name='act'
+						name='act_id'
 						type='radio'
 						className='radio-act'
 						onChange={onChange}
@@ -216,7 +239,7 @@ function Create_form(props) {
 						inline
 						label='Act 3'
 						value='3'
-						name='act'
+						name='act_id'
 						type='radio'
 						className='radio-act'
 						onChange={onChange}
@@ -230,7 +253,7 @@ function Create_form(props) {
 					<Form.Check
 						inline
 						label='Nautiloid'
-						name='region'
+						name='region_id'
 						value='1'
 						type='radio'
 						className='radio-region'
@@ -240,7 +263,7 @@ function Create_form(props) {
 						inline
 						label='Wilderness'
 						value='2'
-						name='region'
+						name='region_id'
 						type='radio'
 						className='radio-region'
 						onChange={onChange}
@@ -249,7 +272,7 @@ function Create_form(props) {
 						inline
 						label='Shadow-Cursed Lands'
 						value='3'
-						name='region'
+						name='region_id'
 						type='radio'
 						className='radio-region'
 						onChange={onChange}
@@ -258,7 +281,7 @@ function Create_form(props) {
 						inline
 						label='Underdark'
 						value='4'
-						name='region'
+						name='region_id'
 						type='radio'
 						className='radio-region'
 						onChange={onChange}
@@ -267,7 +290,7 @@ function Create_form(props) {
 						inline
 						label="Baldur's Gate"
 						value='5'
-						name='region'
+						name='region_id'
 						type='radio'
 						className='radio-region'
 						onChange={onChange}
@@ -289,7 +312,7 @@ function Create_form(props) {
 				<Form.Control
 					as='textarea'
 					placeholder='Insert any details or requirements needed to get to the dialogue referenced above...'
-					name='dialogueDetails'
+					name='dialogue_details'
 					onChange={onChange}
 				/>
 			</Form.Group>
@@ -298,7 +321,7 @@ function Create_form(props) {
 				<Form.Control
 					as='textarea'
 					placeholder='List any additional details that could be of any help...'
-					name='additionalDetails'
+					name='additional_details'
 					onChange={onChange}
 				/>
 			</Form.Group>

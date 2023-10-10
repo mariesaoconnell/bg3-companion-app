@@ -1,5 +1,11 @@
-# Frontend
+👷🏻‍♀️ CRUD FUNCTIONALITY -
+  ✅ - CREATE
+  ✅ - READ
+  ❌ - UPDATE
+  ❌ - DELETE
 
-## TO DO
 
-  - Determine what react frameworks to use for routing.
+👷🏻‍♀️ AUTH -
+
+
+👷🏻‍♀️ UI -
