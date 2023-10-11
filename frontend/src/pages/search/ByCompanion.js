@@ -30,6 +30,7 @@ function ByCompanion(props) {
 				event.preventDefault();
         setIsSubmitted(true);
         setIsLoading(true);
+				console.log(companions)
 
         let url = `http://localhost:3006/companion-approvals/${companions.companion}`;
 
@@ -53,6 +54,10 @@ function ByCompanion(props) {
         // Optionally set some state here to indicate the error to the user
     }
 
+		SetCompanions({
+			companion: [],
+		});
+		console.log(companions)
     setIsLoading(false);
 			};
 
@@ -72,6 +77,7 @@ function ByCompanion(props) {
 								type='checkbox'
 								className='checkbox-approval'
 								onChange={onChange}
+								checked={companions.companion.includes('1')}
 							/>
 							<Form.Check
 								inline
@@ -81,6 +87,7 @@ function ByCompanion(props) {
 								type='checkbox'
 								className='checkbox-approval'
 								onChange={onChange}
+								checked={companions.companion.includes('2')}
 							/>
 							<Form.Check
 								inline
@@ -90,6 +97,7 @@ function ByCompanion(props) {
 								type='checkbox'
 								className='checkbox-approval'
 								onChange={onChange}
+								checked={companions.companion.includes('3')}
 							/>
 							<Form.Check
 								inline
@@ -99,6 +107,7 @@ function ByCompanion(props) {
 								type='checkbox'
 								className='checkbox-approval'
 								onChange={onChange}
+								checked={companions.companion.includes('4')}
 							/>
 							<Form.Check
 								inline
@@ -108,6 +117,7 @@ function ByCompanion(props) {
 								type='checkbox'
 								className='checkbox-approval'
 								onChange={onChange}
+								checked={companions.companion.includes('6')}
 							/>
 							<Form.Check
 								inline
@@ -117,6 +127,7 @@ function ByCompanion(props) {
 								type='checkbox'
 								className='checkbox-approval'
 								onChange={onChange}
+								checked={companions.companion.includes('8')}
 							/>
 							<Form.Check
 								inline
@@ -126,6 +137,7 @@ function ByCompanion(props) {
 								type='checkbox'
 								className='checkbox-approval'
 								onChange={onChange}
+								checked={companions.companion.includes('5')}
 							/>
 							<Form.Check
 								inline
@@ -135,6 +147,7 @@ function ByCompanion(props) {
 								type='checkbox'
 								className='checkbox-approval'
 								onChange={onChange}
+								checked={companions.companion.includes('7')}
 							/>
 							<Button variant='primary' type='submit'>
 								Search
@@ -143,17 +156,18 @@ function ByCompanion(props) {
 					</Form.Group>
 				</Form>
 			</Container>
-			<Container>
+			<Container className='d-flex justify-content-center flex-wrap'>
 				{!isSubmitted ? (
 					<div>Select Companion(s)</div>
 				) : isLoading ? (
 					<div>Loading...</div>
-				) : (
-
-					Array.isArray(results) && results.map((result) => (
-    <DialogueCard key={result.id} data={result} />
-))
-				)}
+				) : results.length > 0 ? (
+					Array.isArray(results) &&
+					results.map((result) => (
+						<DialogueCard key={result.id} data={result} />
+					))
+				)
+				: (<h2>No Dialogue options found</h2>)}
 			</Container>
 		</div>
 	);

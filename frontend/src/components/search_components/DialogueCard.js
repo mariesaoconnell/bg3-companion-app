@@ -2,7 +2,6 @@ import React from 'react';
 import {Card, Container} from 'react-bootstrap';
 
 function DialogueCard({data}) {
-  console.log('From Dialogue Card', data)
   return (
 		<Card className="m-2" style={{ width: '18rem' }}>
 			<Card.Body>
