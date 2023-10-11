@@ -2,7 +2,6 @@ db = require('./db');
 helper = require('../helper');
 
 async function createDialogue(dialogueOptions) {
-	console.log(dialogueOptions)
 	const connection = await db.getConnection();
 
 	try {

@@ -3,7 +3,6 @@ helper = require('../helper');
 const config = require('../config');
 
 async function allApprovals(page = 1) {
-	const offset = helper.getOffset(page, config.listPerPage);
 const rows = await db.query(
     `SELECT companions.companion_name,
             reactions.approves,
