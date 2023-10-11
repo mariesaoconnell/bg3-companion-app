@@ -74,7 +74,7 @@ function ByCompanion(props) {
 								label='Astarion'
 								value='1'
 								name='companion'
-								type='checkbox'
+								type='radio'
 								className='checkbox-approval'
 								onChange={onChange}
 								checked={companions.companion.includes('1')}
@@ -84,7 +84,7 @@ function ByCompanion(props) {
 								label='Gale'
 								value='2'
 								name='companion'
-								type='checkbox'
+								type='radio'
 								className='checkbox-approval'
 								onChange={onChange}
 								checked={companions.companion.includes('2')}
@@ -94,7 +94,7 @@ function ByCompanion(props) {
 								label='Karlach'
 								value='3'
 								name='companion'
-								type='checkbox'
+								type='radio'
 								className='checkbox-approval'
 								onChange={onChange}
 								checked={companions.companion.includes('3')}
@@ -104,7 +104,7 @@ function ByCompanion(props) {
 								label='Shadowheart'
 								value='4'
 								name='companion'
-								type='checkbox'
+								type='radio'
 								className='checkbox-approval'
 								onChange={onChange}
 								checked={companions.companion.includes('4')}
@@ -114,7 +114,7 @@ function ByCompanion(props) {
 								label="Lae'zel"
 								value='6'
 								name='companion'
-								type='checkbox'
+								type='radio'
 								className='checkbox-approval'
 								onChange={onChange}
 								checked={companions.companion.includes('6')}
@@ -124,7 +124,7 @@ function ByCompanion(props) {
 								label='Halsin'
 								value='8'
 								name='companion'
-								type='checkbox'
+								type='radio'
 								className='checkbox-approval'
 								onChange={onChange}
 								checked={companions.companion.includes('8')}
@@ -134,7 +134,7 @@ function ByCompanion(props) {
 								label='Wyll'
 								value='5'
 								name='companion'
-								type='checkbox'
+								type='radio'
 								className='checkbox-approval'
 								onChange={onChange}
 								checked={companions.companion.includes('5')}
@@ -144,7 +144,7 @@ function ByCompanion(props) {
 								label='Minthara'
 								value='7'
 								name='companion'
-								type='checkbox'
+								type='radio'
 								className='checkbox-approval'
 								onChange={onChange}
 								checked={companions.companion.includes('7')}
@@ -158,7 +158,7 @@ function ByCompanion(props) {
 			</Container>
 			<Container className='d-flex justify-content-center flex-wrap'>
 				{!isSubmitted ? (
-					<div>Select Companion(s)</div>
+					<div>Select a Companion</div>
 				) : isLoading ? (
 					<div>Loading...</div>
 				) : results.length > 0 ? (
