@@ -5,8 +5,6 @@ const config = require('../config');
 async function companionApprovals(page = 1, companion_id) {
 	const offset = helper.getOffset(page, config.listPerPage);
 
-	console.log(companion_id)
-
 	const rows = await db.query(
 		`SELECT companions.companion_name, reactions.approves, reactions.disapproves, dialogues.dialogue, dialogues.dialogue_details, dialogues.additional_details, regions.region_name, regions.act
 		FROM companions

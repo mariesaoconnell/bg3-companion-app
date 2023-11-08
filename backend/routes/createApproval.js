@@ -3,7 +3,7 @@ const router = express.Router();
 const createDialogue = require('../services/createApproval');
 
 router.post('/', async function(req, res, next) {
-  console.log('From Server:', req.body)
+  
   const {act_id, region_id, dialogue, dialogue_details, additional_details, approve, disapprove} = req.body;
 
   if (!act_id || !region_id || !dialogue || !dialogue_details || !additional_details || !approve || !disapprove) {

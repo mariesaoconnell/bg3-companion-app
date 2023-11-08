@@ -1,5 +1,5 @@
 const express = require('express');
-const cors = require("cors");
+const cors = require('cors');
 const app = express();
 
 const port = 3006;
@@ -9,7 +9,8 @@ allApprovalsRouter = require('./routes/allApprovals');
 approvalsByActRouter = require('./routes/approvalsByAct');
 companionApprovalsRouter = require('./routes/companionApprovals');
 createApprovalRouter = require('./routes/createApproval');
-deleteApproval = require('./routes/deleteApproval')
+deleteApproval = require('./routes/deleteApproval');
+loginRouter = require('./routes/login');
 
 var corsOptions = {
 	origin: 'http://localhost:3000',
@@ -26,13 +27,13 @@ app.use(
 app.get('/', (req, res) => {
 	res.json({ message: 'Welcome to the Home Page!' });
 });
-
-
 app.use('/all-approvals', allApprovalsRouter);
 app.use('/approvals-by-act', approvalsByActRouter);
 app.use('/companion-approvals', companionApprovalsRouter);
 app.use('/create-approval', createApprovalRouter);
 app.use('/', deleteApproval);
+app.use('/login', loginRouter);
+
 
 // ERROR HANDLING MIDDLEWARE
 app.use((err, req, res, next) => {

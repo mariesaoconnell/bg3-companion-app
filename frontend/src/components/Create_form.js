@@ -54,6 +54,7 @@ function Create_form(props) {
 	const onSubmit = (event) => {
 		event.preventDefault();
 		// Here you can handle the submission (e.g., send the formData to an API)
+		console.log(formData)
 		submitData(formData);
 	};
 
