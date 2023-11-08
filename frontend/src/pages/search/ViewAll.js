@@ -37,9 +37,9 @@ function ViewAll(props) {
     setIsLoading(false);
   };
   return (
-		<div>
-			<h1>View All Dialogues</h1>
-			<Container className='d-flex flex-wrap'>
+		<Container>
+			<h1 className='text-center my-5'>View All Dialogues</h1>
+			<Container className='d-flex flex-wrap mt-5'>
 				{isLoading ? (
 					<div>Loading...</div>
 				) : (
@@ -49,7 +49,7 @@ function ViewAll(props) {
 					))
 				)}
 			</Container>
-		</div>
+		</Container>
 	);
 }
 

@@ -4,10 +4,10 @@ import { Container } from 'react-bootstrap';
 import NavigationBar from '../components/NavigationBar';
 function Layout(props) {
   return (
-		<Container>
+		<Container fluid>
 			<NavigationBar />
 
-      <Container>
+      <Container fluid>
 			  <Outlet />
       </Container>
 		</Container>

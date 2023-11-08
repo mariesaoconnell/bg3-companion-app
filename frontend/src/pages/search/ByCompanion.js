@@ -1,175 +1,126 @@
-import React, {useState} from 'react';
-import {Form, Container, Button} from 'react-bootstrap';
-import DialogueCard from '../../components/search_components/DialogueCard'
+import React, { useState } from 'react';
+import { Form, Container, Button } from 'react-bootstrap';
+import DialogueCard from '../../components/search_components/DialogueCard';
+import '../../styles/by-companion.css';
+
+import Astarion from '../../assets/images/astarion_pfp.png';
+import Gale from '../../assets/images/gale_pfp.png';
+import Shadowheart from '../../assets/images/shadowheart_pfp.png';
+import Laezel from '../../assets/images/laezel_pfp.png';
+import Halsin from '../../assets/images/halsin_pfp.png';
+import Wyll from '../../assets/images/wyll_pfp.png';
+import Karlach from '../../assets/images/karlach_pfp.png';
+import Minthara from '../../assets/images/minthara_pfp.png';
 
 function ByCompanion(props) {
-
-  const [companions, SetCompanions] = useState({
-    companion: []
-  });
+  const [selectedCompanion, setSelectedCompanion] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [results, setResults] = useState([]);
 
-      const onChange = (event) => {
-				const { name, value, type } = event.target;
+  const companionsArray = [
+    { id: '1', name: 'Astarion', image: Astarion },
+    { id: '2', name: 'Gale', image: Gale },
+    { id: '4', name: 'Shadowheart', image: Shadowheart },
+    { id: '6', name: 'Laezel', image: Laezel },
+    { id: '3', name: 'Karlach', image: Karlach },
+    { id: '5', name: 'Wyll', image: Wyll },
+    { id: '8', name: 'Halsin', image: Halsin },
+    { id: '7', name: 'Minthara', image: Minthara },
+  ];
 
-				if (type === 'checkbox') {
-					const newArray = [...companions[name], value];
-					if (companions[name].includes(value)) {
-						const valueIndex = companions[name].indexOf(value);
-						newArray.splice(valueIndex, 1);
-					}
-					SetCompanions((prevState) => ({ ...prevState, [name]: newArray }));
-				} else {
-					SetCompanions((prevState) => ({ ...prevState, [name]: value }));
-				}
-			};
+  const onChange = (event) => {
+    const { value } = event.target;
+    setSelectedCompanion(value);
+  };
 
-			const onSubmit = async(event) => {
-				event.preventDefault();
-        setIsSubmitted(true);
-        setIsLoading(true);
-				console.log(companions)
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    setIsSubmitted(true);
+    setIsLoading(true);
 
-        let url = `http://localhost:3006/companion-approvals/${companions.companion}`;
+    let url = `http://localhost:3006/companion-approvals/${selectedCompanion}`;
 
-        try {
-        const response = await fetch(url);
+    try {
+      const response = await fetch(url);
 
-        // Check if the response is ok (status in the range 200-299)
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
 
-        const apiResults = await response.json();
-        if (Array.isArray(apiResults.data)) {
-					setResults(apiResults.data);
-				} else {
-					console.error('API did not return an array:', apiResults);
-					setResults([]); // set to an empty array or handle in some other way
-				}
+      const apiResults = await response.json();
+      if (Array.isArray(apiResults.data)) {
+        setResults(apiResults.data);
+      } else {
+        console.error('API did not return an array:', apiResults);
+        setResults([]);
+      }
     } catch (error) {
-        console.error('Failed fetching data: ', error);
-        // Optionally set some state here to indicate the error to the user
+      console.error('Failed fetching data: ', error);
     }
 
-		SetCompanions({
-			companion: [],
-		});
-		console.log(companions)
     setIsLoading(false);
-			};
+  };
 
   return (
-		<div>
-			<h1>Search By Companion</h1>
-			<Container className='d-flex justify-content-center'>
-				<Form onSubmit={onSubmit}>
-					<Form.Group>
-						<Form.Label>Search by Companion(s):</Form.Label>
-						<Container>
-							<Form.Check
-								inline
-								label='Astarion'
-								value='1'
-								name='companion'
-								type='radio'
-								className='checkbox-approval'
-								onChange={onChange}
-								checked={companions.companion.includes('1')}
-							/>
-							<Form.Check
-								inline
-								label='Gale'
-								value='2'
-								name='companion'
-								type='radio'
-								className='checkbox-approval'
-								onChange={onChange}
-								checked={companions.companion.includes('2')}
-							/>
-							<Form.Check
-								inline
-								label='Karlach'
-								value='3'
-								name='companion'
-								type='radio'
-								className='checkbox-approval'
-								onChange={onChange}
-								checked={companions.companion.includes('3')}
-							/>
-							<Form.Check
-								inline
-								label='Shadowheart'
-								value='4'
-								name='companion'
-								type='radio'
-								className='checkbox-approval'
-								onChange={onChange}
-								checked={companions.companion.includes('4')}
-							/>
-							<Form.Check
-								inline
-								label="Lae'zel"
-								value='6'
-								name='companion'
-								type='radio'
-								className='checkbox-approval'
-								onChange={onChange}
-								checked={companions.companion.includes('6')}
-							/>
-							<Form.Check
-								inline
-								label='Halsin'
-								value='8'
-								name='companion'
-								type='radio'
-								className='checkbox-approval'
-								onChange={onChange}
-								checked={companions.companion.includes('8')}
-							/>
-							<Form.Check
-								inline
-								label='Wyll'
-								value='5'
-								name='companion'
-								type='radio'
-								className='checkbox-approval'
-								onChange={onChange}
-								checked={companions.companion.includes('5')}
-							/>
-							<Form.Check
-								inline
-								label='Minthara'
-								value='7'
-								name='companion'
-								type='radio'
-								className='checkbox-approval'
-								onChange={onChange}
-								checked={companions.companion.includes('7')}
-							/>
-							<Button variant='primary' type='submit'>
-								Search
-							</Button>
-						</Container>
-					</Form.Group>
-				</Form>
-			</Container>
+		<Container>
+			<h1 className='text-center my-5'>Search By Companion</h1>
+
 			<Container className='d-flex justify-content-center flex-wrap'>
 				{!isSubmitted ? (
-					<div>Select a Companion</div>
+					<Container className='d-flex justify-content-center'>
+						<Form onSubmit={onSubmit}>
+							<Form.Group>
+								<Container className='d-flex flex-wrap justify-content-center'>
+									{companionsArray.map((companion) => (
+										<label
+											key={companion.id}
+											className={`companion-label ${
+												selectedCompanion === companion.id ? 'selected' : ''
+											}`}>
+											<input
+												type='radio'
+												name='companion'
+												value={companion.id}
+												checked={selectedCompanion === companion.id}
+												onChange={onChange}
+												style={{ display: 'none' }}
+											/>
+											<img
+												src={companion.image}
+												alt={companion.name}
+												className={`companion-image m-3 rounded pe-auto ${
+													selectedCompanion === companion.id
+														? 'selected-image'
+														: ''
+												}`}
+												style={{ height: 250, width: 250 }}
+											/>
+										</label>
+									))}
+								</Container>
+							</Form.Group>
+							<Container className='d-flex justify-content-end'>
+								<Button variant='primary' type='submit'>
+									Search
+								</Button>
+							</Container>
+						</Form>
+					</Container>
 				) : isLoading ? (
 					<div>Loading...</div>
 				) : results.length > 0 ? (
-					Array.isArray(results) &&
-					results.map((result) => (
-						<DialogueCard key={result.id} data={result} />
-					))
-				)
-				: (<h2>No Dialogue options found</h2>)}
+					<>
+						{Array.isArray(results) &&
+							results.map((result) => (
+								<DialogueCard key={result.id} data={result} />
+							))}
+					</>
+				) : (
+					<h2>No Dialogue options found</h2>
+				)}
 			</Container>
-		</div>
+		</Container>
 	);
 }
 

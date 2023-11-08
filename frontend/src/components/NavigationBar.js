@@ -1,26 +1,30 @@
 import React from 'react';
-import {Nav, Navbar, NavDropdown, Container} from 'react-bootstrap';
+import {Nav, Navbar, Container} from 'react-bootstrap';
 
 function NavigationBar(props) {
   return (
-    <Navbar expand='lg'>
-      <Container>
-        <Navbar.Brand href='/'>Baldur's Gate Companion App</Navbar.Brand>
-        <Navbar.Toggle aria-controls='basic-navbar-nav'/>
-        <Navbar.Collapse>
-          <Nav className='me-auto'>
-            <Nav.Link href='/'>Home</Nav.Link>
-            <Nav.Link href='/create'>Create</Nav.Link>
-            <NavDropdown title="Search By">
-              <NavDropdown.Item href='/search/act'>Act</NavDropdown.Item>
-              <NavDropdown.Item href='/search/companion'>Companion</NavDropdown.Item>
-              <NavDropdown.Item href='/search/view-all'>View All Approvals</NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
-  );
+		<Navbar expand='lg'>
+			<Container>
+				<Navbar.Brand href='/'>Finding Love in Faerûn</Navbar.Brand>
+				<Navbar.Toggle aria-controls='basic-navbar-nav' />
+				<Navbar.Collapse>
+				<Container className='d-flex justify-content-evenly'>
+					<Nav className='me-auto'>
+						<Nav.Link href='/'>Home</Nav.Link>
+						<Nav.Link href='/create'>Create</Nav.Link>
+						<Nav.Link href='/search/act'>Act</Nav.Link>
+						<Nav.Link href='/search/companion'>
+							Companion
+						</Nav.Link>
+						<Nav.Link href='/search/view-all'>
+							View All Approvals
+						</Nav.Link>
+					</Nav>
+				</Container>
+				</Navbar.Collapse>
+			</Container>
+		</Navbar>
+	);
 }
 
 export default NavigationBar;

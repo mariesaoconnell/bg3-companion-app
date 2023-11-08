@@ -59,10 +59,10 @@ function Create_form(props) {
 	};
 
 	return (
-		<Form onSubmit={onSubmit}>
+		<Form className='p-5' onSubmit={onSubmit}>
 			<Form.Group>
 				<Form.Label>Companions Who Approve:</Form.Label>
-				<Container>
+				<Container className='text-center'>
 					<Form.Check
 						inline
 						label='Astarion'
@@ -139,7 +139,7 @@ function Create_form(props) {
 			</Form.Group>
 			<Form.Group>
 				<Form.Label>Companions Who Disapprove:</Form.Label>
-				<Container>
+				<Container className='text-center'>
 					<Form.Check
 						inline
 						label='Astarion'
@@ -217,7 +217,7 @@ function Create_form(props) {
 			<hr />
 			<Form.Group>
 				<Form.Label>Act:</Form.Label>
-				<Container>
+				<Container className='text-center'>
 					<Form.Check
 						inline
 						label='Act 1'
@@ -250,7 +250,7 @@ function Create_form(props) {
 			<hr />
 			<Form.Group>
 				<Form.Label>Region:</Form.Label>
-				<Container>
+				<Container className='text-center'>
 					<Form.Check
 						inline
 						label='Nautiloid'
@@ -327,9 +327,11 @@ function Create_form(props) {
 				/>
 			</Form.Group>
 
-			<Button variant='primary' type='submit' size='lg'>
-				Submit
-			</Button>
+			<Container className='d-flex justify-content-end mt-5'>
+				<Button variant='primary' type='submit' size='lg'>
+					Submit
+				</Button>
+			</Container>
 		</Form>
 	);
 }

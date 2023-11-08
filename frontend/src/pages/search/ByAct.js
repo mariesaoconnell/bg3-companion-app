@@ -54,8 +54,8 @@ function ByAct(props) {
 	};
 
 	return (
-		<div>
-			<h1>Search By Act</h1>
+		<Container>
+			<h1 className='text-center'>Search By Act</h1>
 			<Container className=''>
 				<Form onSubmit={onSubmit}>
 					<Form.Group>
@@ -113,7 +113,7 @@ function ByAct(props) {
 					<h2>No Dialogue options found</h2>
 				)}
 			</Container>
-		</div>
+		</Container>
 	);
 }
 

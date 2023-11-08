@@ -1,0 +1,7 @@
+.companion-image:hover {
+  cursor: pointer;
+}
+
+.selected-image {
+  border: 10px solid orange;
+}
