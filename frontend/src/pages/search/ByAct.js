@@ -55,12 +55,11 @@ function ByAct(props) {
 
 	return (
 		<Container>
-			<h1 className='text-center'>Search By Act</h1>
+			<h1 className='text-center my-5'>Search By Act</h1>
 			<Container className=''>
 				<Form onSubmit={onSubmit}>
 					<Form.Group>
-						<Form.Label>Search by Companion(s):</Form.Label>
-						<Container className="d-flex justify-content-center">
+						<Container className="d-flex my-5 justify-content-center">
 							<Form.Check
 								inline
 								label='Act 1'

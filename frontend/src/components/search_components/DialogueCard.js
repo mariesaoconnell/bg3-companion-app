@@ -1,12 +1,15 @@
 import React from 'react';
 import {Card, Container} from 'react-bootstrap';
 
+import '../../styles/dialogue-card.css';
+
+
 function DialogueCard({data}) {
 
   return (
-		<Card className='m-2' style={{ width: '18rem' }}>
+		<Card className='m-2' id='card-main' style={{ width: '100%' }}>
 			<Card.Body>
-				<Card.Title>
+				<Card.Title id='card-title'>
 					Act {data.act} | Region: {data.region_name}
 				</Card.Title>
 				<Card.Text>

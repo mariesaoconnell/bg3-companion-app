@@ -6,7 +6,7 @@ import { Container } from 'react-bootstrap';
 function Create(props) {
   return (
 		<Container>
-			<h1 className='text-center'>Add Dialogue Scene</h1>
+			<h1 className='text-center my-5'>Add Dialogue Scene</h1>
 			<Create_form />
 		</Container>
 	);

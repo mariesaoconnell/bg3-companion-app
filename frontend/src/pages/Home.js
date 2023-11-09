@@ -4,11 +4,11 @@ import { Container, Ratio, Image } from 'react-bootstrap';
 
 function Home(props) {
   return (
-		<Container className='d-flex flex-column p-5 text-center' fluid>
-			<h1 className='text-center mb-4'>
-				The Ultimate Guide to your Bosom Companion's Heart
+		<Container className='d-flex flex-column text-center' fluid>
+			<h1 className='text-center mb-4' style={{fontSize: 50}}>
+				Snaring your Bosom Companion's heart is just a swipe away!
 			</h1>
-			<div className='d-block mx-auto' style={{ width: 1000, height: 'auto' }}>
+			<Container className='d-block mx-auto' >
 				<Ratio aspectRatio='16x9'>
 					<Image
 						className='rounded'
@@ -16,8 +16,8 @@ function Home(props) {
 						alt='Withers'
 					/>
 				</Ratio>
-        <p className='mt-3'>Don't get caught in Act III getting clowned on by Withers for spending nights alone!</p>
-			</div>
+        <p className='mt-3'>Long gone are the nights spent on the cold, hard camp floor. <br/> With Cinder and Withers as your wingman, you'll never have to worry about a cold sleeping bag!</p>
+			</Container>
 		</Container>
 	);
 }
