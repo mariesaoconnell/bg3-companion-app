@@ -36,7 +36,7 @@ function Create_form(props) {
 				},
 				body: JSON.stringify(data),
 			});
-
+			console.log(data)
 			if (!response.ok) {
 				// If HTTP status is not in the 200-299 range
 				// Try to parse it as text for an error message, then throw it
@@ -54,7 +54,6 @@ function Create_form(props) {
 	const onSubmit = (event) => {
 		event.preventDefault();
 		// Here you can handle the submission (e.g., send the formData to an API)
-		console.log(formData)
 		submitData(formData);
 	};
 

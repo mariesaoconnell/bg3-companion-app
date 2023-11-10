@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Container, Button } from 'react-bootstrap';
+import { Form, Container, Button, Breadcrumb } from 'react-bootstrap';
 import DialogueCard from '../../components/search_components/DialogueCard';
 import '../../styles/by-companion.css';
 
@@ -130,7 +130,15 @@ function ByCompanion(props) {
 					<div>Loading...</div>
 				) : results.length > 0 ? (
 					<>
-					
+						<Breadcrumb>
+							<Breadcrumb.Item href='/'>Home</Breadcrumb.Item>
+							<Breadcrumb.Item href='/search/companion'>
+								Search By Companion
+							</Breadcrumb.Item>
+							<Breadcrumb.Item active>
+								Search Results for {companionName}
+							</Breadcrumb.Item>
+						</Breadcrumb>
 						{Array.isArray(results) &&
 							results.map((result) => (
 								<DialogueCard key={result.id} data={result} />
