@@ -12,6 +12,15 @@ import Wyll from '../../assets/images/wyll_pfp.png';
 import Karlach from '../../assets/images/karlach_pfp.png';
 import Minthara from '../../assets/images/minthara_pfp.png';
 
+import AstarionAlt from '../../assets/images/astarion_alt.png';
+import GaleAlt from '../../assets/images/gale_alt.png';
+import ShadowheartAlt from '../../assets/images/shadowheart_alt.png';
+import LaezelAlt from '../../assets/images/laezel_alt.png';
+import HalsinAlt from '../../assets/images/halsin_alt.png';
+import WyllAlt from '../../assets/images/wyll_alt.png';
+import KarlachAlt from '../../assets/images/karlach_alt.png';
+import MintharaAlt from '../../assets/images/minthara_alt.png';
+
 function ByCompanion(props) {
   const [selectedCompanion, setSelectedCompanion] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -20,14 +29,14 @@ function ByCompanion(props) {
 	const [companionName, setCompanionName] = useState('');
 
   const companionsArray = [
-    { id: '1', name: 'Astarion', image: Astarion },
-    { id: '2', name: 'Gale', image: Gale },
-    { id: '4', name: 'Shadowheart', image: Shadowheart },
-    { id: '6', name: 'Laezel', image: Laezel },
-    { id: '3', name: 'Karlach', image: Karlach },
-    { id: '5', name: 'Wyll', image: Wyll },
-    { id: '8', name: 'Halsin', image: Halsin },
-    { id: '7', name: 'Minthara', image: Minthara },
+    { id: '1', name: 'Astarion', image: Astarion, alt_image: AstarionAlt },
+    { id: '2', name: 'Gale', image: Gale, alt_image: GaleAlt },
+    { id: '4', name: 'Shadowheart', image: Shadowheart, alt_image: ShadowheartAlt },
+    { id: '6', name: 'Laezel', image: Laezel, alt_image: LaezelAlt },
+    { id: '3', name: 'Karlach', image: Karlach, alt_image: KarlachAlt },
+    { id: '5', name: 'Wyll', image: Wyll, alt_image: WyllAlt },
+    { id: '8', name: 'Halsin', image: Halsin, alt_image: HalsinAlt },
+    { id: '7', name: 'Minthara', image: Minthara, alt_image: MintharaAlt },
   ];
 
 	  useEffect(() => {
@@ -106,7 +115,11 @@ function ByCompanion(props) {
 												style={{ display: 'none' }}
 											/>
 											<img
-												src={companion.image}
+												src={
+													selectedCompanion === companion.id
+														? companion.alt_image
+														: companion.image
+												}
 												alt={companion.name}
 												className={`companion-image m-3 rounded pe-auto ${
 													selectedCompanion === companion.id

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
 
-function Create_form(props) {
+function Create_form({setSubmitted}) {
 	const [formData, setFormData] = useState({
 		approve: [],
 		disapprove: [],
@@ -36,7 +36,7 @@ function Create_form(props) {
 				},
 				body: JSON.stringify(data),
 			});
-			console.log(data)
+
 			if (!response.ok) {
 				// If HTTP status is not in the 200-299 range
 				// Try to parse it as text for an error message, then throw it
@@ -49,6 +49,7 @@ function Create_form(props) {
 			console.error('Error submitting data:', error);
 			// Handle errors accordingly, maybe set some state or show an error message
 		}
+		setSubmitted(true)
 	};
 
 	const onSubmit = (event) => {
