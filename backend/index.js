@@ -1,6 +1,10 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
+var Parse = require('parse/node');
+
+Parse.initialize("", "");
+Parse.serverURL = 'https://parseapi.back4app.com/';
 
 const port = 3006;
 

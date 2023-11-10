@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Container, Button } from 'react-bootstrap';
 import DialogueCard from '../../components/search_components/DialogueCard';
 import '../../styles/by-companion.css';
@@ -17,6 +17,7 @@ function ByCompanion(props) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [results, setResults] = useState([]);
+	const [companionName, setCompanionName] = useState('');
 
   const companionsArray = [
     { id: '1', name: 'Astarion', image: Astarion },
@@ -28,6 +29,19 @@ function ByCompanion(props) {
     { id: '8', name: 'Halsin', image: Halsin },
     { id: '7', name: 'Minthara', image: Minthara },
   ];
+
+	  useEffect(() => {
+			// Find the companion object with the matching id
+			const selectedCompanionObject = companionsArray.find(
+				(companion) => companion.id === selectedCompanion
+			);
+
+			// If a matching companion is found, log its name
+			if (selectedCompanionObject) {
+				console.log('Selected Companion:', selectedCompanionObject.name);
+				setCompanionName(selectedCompanionObject.name)
+			}
+		}, [selectedCompanion, companionsArray]);
 
   const onChange = (event) => {
     const { value } = event.target;
@@ -64,8 +78,13 @@ function ByCompanion(props) {
 
   return (
 		<Container>
-			<h1 className='text-center my-5'>Search By Companion</h1>
-
+			<h1 className='text-center my-5'>
+				{results.length > 0 ? (
+					<p>Results for {companionName}</p>
+				) : (
+					<>Search By Companion</>
+				)}
+			</h1>
 			<Container className='d-flex justify-content-center flex-wrap'>
 				{!isSubmitted ? (
 					<Container className='d-flex justify-content-center'>
@@ -111,6 +130,7 @@ function ByCompanion(props) {
 					<div>Loading...</div>
 				) : results.length > 0 ? (
 					<>
+					
 						{Array.isArray(results) &&
 							results.map((result) => (
 								<DialogueCard key={result.id} data={result} />

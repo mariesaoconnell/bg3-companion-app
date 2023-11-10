@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card, Container} from 'react-bootstrap';
+import {Card, Container, Row, Col} from 'react-bootstrap';
 
 import '../../styles/dialogue-card.css';
 
@@ -13,28 +13,31 @@ function DialogueCard({data}) {
 					Act {data.act} | Region: {data.region_name}
 				</Card.Title>
 				<Card.Text>
-					<Container>
-						<b>Approves:</b>
-						<Container>
-							{data.all_approvals ? (
-								<>{data.all_approvals}</>
-							) : (
-								<>No Disapprovals</>
-							)}
-						</Container>
+					<Container className='my-4'>
+						<Row>
+							<Col>
+								<b>✅ Approves: ✅</b>
+								<Container>
+									{data.all_approvals ? (
+										<>{data.all_approvals}</>
+									) : (
+										<>No Disapprovals</>
+									)}
+								</Container>
+							</Col>
+							<Col>
+								<b>❌ Disapproves: ❌</b>
+								<Container>
+									{data.all_disapprovals ? (
+										<>{data.all_disapprovals}</>
+									) : (
+										<>No Disapprovals</>
+									)}
+								</Container>
+							</Col>
+						</Row>
 					</Container>
-
-					<Container>
-						<b>Disapproves:</b>
-						<Container>
-							{data.all_disapprovals ? (
-								<>{data.all_disapprovals}</>
-							) : (
-								<>No Disapprovals</>
-							)}
-						</Container>
-					</Container>
-
+					<hr />
 					<Container>
 						<b>Dialogue:</b>
 						<Container>{data.dialogue}</Container>
