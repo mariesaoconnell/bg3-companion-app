@@ -142,7 +142,7 @@ function ByCompanion(props) {
 				) : isLoading ? (
 					<div>Loading...</div>
 				) : results.length > 0 ? (
-					<>
+					<Container>
 						<Breadcrumb>
 							<Breadcrumb.Item href='/'>Home</Breadcrumb.Item>
 							<Breadcrumb.Item href='/search/companion'>
@@ -156,7 +156,7 @@ function ByCompanion(props) {
 							results.map((result) => (
 								<DialogueCard key={result.id} data={result} />
 							))}
-					</>
+					</Container>
 				) : (
 					<h2>No Dialogue options found</h2>
 				)}
