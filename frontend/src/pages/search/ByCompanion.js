@@ -152,13 +152,26 @@ function ByCompanion(props) {
 								Search Results for {companionName}
 							</Breadcrumb.Item>
 						</Breadcrumb>
-						{Array.isArray(results) &&
-							results.map((result) => (
-								<DialogueCard key={result.id} data={result} />
-							))}
+						<Container>
+							{Array.isArray(results) &&
+								results.map((result) => (
+									<DialogueCard key={result.id} data={result} />
+								))}
+						</Container>
 					</Container>
 				) : (
-					<h2>No Dialogue options found</h2>
+					<Container>
+						<Breadcrumb className='mb-5'>
+							<Breadcrumb.Item href='/'>Home</Breadcrumb.Item>
+							<Breadcrumb.Item href='/search/companion'>
+								Search By Companion
+							</Breadcrumb.Item>
+							<Breadcrumb.Item active>
+								Search Results for {companionName}
+							</Breadcrumb.Item>
+						</Breadcrumb>
+						<h2 className='text-center'>No Dialogue options found</h2>
+					</Container>
 				)}
 			</Container>
 		</Container>

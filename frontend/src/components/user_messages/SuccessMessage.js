@@ -3,11 +3,10 @@ import CritSuccess from '../../assets/images/critical_success.png';
 import { Container } from 'react-bootstrap';
 
 function SuccessMessage({ setSubmitted }) {
-
 	useEffect(() => {
 		const timeoutId = setTimeout(() => {
 			setSubmitted(false);
-		}, 10000);
+		}, 5000);
 
 		return () => clearTimeout(timeoutId);
 	}, [setSubmitted]);
