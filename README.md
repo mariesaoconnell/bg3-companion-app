@@ -1,7 +1,7 @@
 # Cinder
 
 # Demo
-
+![Demo](https://github.com/mariesaoconnell/bg3-companion-app/blob/main/assets/Demo.gif)
 
 # Description
 Cinder is a Full-Stack application, developed to assist users in efficiency romancing their BG3 Crush.
