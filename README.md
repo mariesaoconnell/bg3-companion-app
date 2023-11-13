@@ -1,76 +1,18 @@
-# BG3 COMPANION APP
+# Cinder
 
-### About
-
-This app is a BG3 companion approval guide.
-This app will allow users to sort by companion.
-This app will allow user ratings / comments / etc.
-This app will require users to create an account to leave comments / ratings.
-
-### Database Info
-
-#### User Table
-    user_id (PK)
-    first_name
-    last_name
-    username
-    email
-    password
-
-#### Companions Table
-    companion_id (PK)
-    name
-
-#### Dialogues (Previously Companion Approvals)
-    id (PK)
-    act_id (FK)
-    region_id (FK)
-    dialogue
-    dialogue_details
-    additional_details
-
-#### Act Table
-    act_id
-    act
-
-#### Regions
-    region_id (PK)
-    region_name
-    act (FK)
-
-#### Reactions
-    id (PK)
-    companion_id (FK)
-    dialogue_id (FK)
-    approves
-
-![DataBase](./assets/Screenshot%202023-09-20%20at%209.51.05%20PM.png)
+# Demo
 
 
+# Description
+Cinder is a Full-Stack application, developed to assist users in efficiency romancing their BG3 Crush.
 
-## To Do List:
+My inspiration for Cinder came from my love of BG3 and my devotion to romance every character to see how their ending played out. Doing that on your own without some kind of guide would take a ton of time, considering 300 hours in I had finally managed to finish my first play through. The few guides I found felt a bit lack luster, so I started developing an app that felt easier on the eyes and made navigation and tracking my progress easier.
 
-    ✅ - create database
-            db: bg3_companion_db
-            host: localhost
-            user: root
-            password: password
+Cinder was developed to allow users to search dialogue scenes by act, companion or simply view all dialogue scene in the database for their Bosom Companion's reaction. Cinder also allows users to create new dialogue scenarios and is anticipated to support user Logins, where Users will be able to add, update and delete their own posts, while also being able to rate and comment on other users posts.
 
-    ✅ - create tables
-            - companions
-            - act
-            - dialogues
-            - regions
-            - user
-
-    👷🏻‍♀️ - create "crud" functionality
-        ✅ - Create Approval (Must be logged in)
-        ✅ - Delete Approval (Must be Admin)
-        🚨 - Update Approval (Must be logged in)
-        ✅ - Search (Must be logged in)
-            ✅ - Search All Approvals
-            ✅ - Search by Act
-            ✅ - Search by Companion
-            🚨 - Search Multiple Companions
-
-    👷🏻‍♀️ - Authorization and Authentication
+# Technologies Used
+- ReactJS
+- Bootstrap
+- NodeJS
+- Express
+- MySQL
